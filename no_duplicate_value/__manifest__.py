@@ -47,6 +47,7 @@ Safety
   no bad data is ever left behind.
 """,
     'depends': ['base'],
+    'images': ['static/description/banner.png'],
     'data': [
         'security/ir.model.access.csv',
         'views/duplicate_value_rule_views.xml',
