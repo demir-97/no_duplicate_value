@@ -1,0 +1,58 @@
+<section style="max-width: 900px; margin: 0 auto; padding: 32px 16px; font-family: Arial, Helvetica, sans-serif; color: #333;">
+    <!-- apps.odoo.com strips background/gradient styles but keeps text colors:
+         every text color here must stay readable on a plain white page. -->
+    <div style="text-align: center; padding: 40px 24px; background-color: #f6f1f5; border: 1px solid #e4d9e1; border-radius: 12px;">
+        <h1 style="margin: 0 0 12px; font-size: 32px; color: #5E3C58;">No Duplicate Value &mdash; Unique-Field Rules From Settings, No Developer, No SQL</h1>
+        <p style="margin: 0; font-size: 18px; color: #555;">Pick a model and a field from Settings &rsaquo; Technical &rsaquo; No Duplicate Value and save: from then on, saving a record with a value that already exists on another record of that model is blocked with a clear error message, instead of silently creating a duplicate.</p>
+        <div style="display:flex; justify-content:center; gap:10px; margin-top:18px; flex-wrap:wrap;">
+        <span style="display:inline-block; background:#EAF5EC; color:#1F7A54; border:1px solid #BCDFC6; border-radius:20px; padding:6px 16px; font-size:13px; font-weight:600;">✓ Odoo 17.0</span><span style="display:inline-block; background:#EAF5EC; color:#1F7A54; border:1px solid #BCDFC6; border-radius:20px; padding:6px 16px; font-size:13px; font-weight:600;">✓ Odoo 18.0</span><span style="display:inline-block; background:#EAF5EC; color:#1F7A54; border:1px solid #BCDFC6; border-radius:20px; padding:6px 16px; font-size:13px; font-weight:600;">✓ Odoo 19.0</span>
+    </div>
+    </div>
+
+
+    <div style="margin-top: 32px;">
+        <h2 style="color: #875A7B; font-size: 24px;">How it works</h2>
+        <ol style="font-size: 15px; line-height: 1.9; padding-left: 20px; margin-bottom: 0;"><li>Go to <b>Settings &rsaquo; Technical &rsaquo; No Duplicate Value</b>.</li><li>Create a rule: pick a model and the field that must stay unique.</li><li>Save. From now on, saving a duplicate value on that field is blocked with a clear error.</li></ol>
+    </div>
+
+    <div style="margin-top: 32px;">
+        <h2 style="color: #875A7B; font-size: 24px;">Options per rule</h2>
+        <ul style="font-size: 15px; line-height: 1.9; padding-left: 20px; margin-bottom: 0;"><li><b>Case-insensitive</b> (default on) &mdash; "ABC-001" and "abc-001" count as the same value.</li><li><b>Scope to company</b> &mdash; if the model has a Company field, only records of the same company are compared.</li><li><b>Custom error message.</b></li><li>Rules can be disabled without deleting them.</li><li>Supported field types: Char, Text, Selection, Integer, Float (stored fields only).</li></ul>
+    </div>
+
+    <div style="margin-top: 32px;">
+        <h2 style="color: #875A7B; font-size: 24px;">Safety</h2>
+        <ul style="font-size: 15px; line-height: 1.9; padding-left: 20px; margin-bottom: 0;"><li>Zero rules configured = zero behavior change.</li><li>The check runs after the normal save, inside the same database transaction, so a blocked save leaves no partial data behind.</li></ul>
+    </div>
+
+    <div style="margin-top: 32px;">
+        <h2 style="color: #875A7B; font-size: 24px;">Technical</h2>
+        <p style="font-size: 15px; line-height: 1.6;">One configuration model (<code>no_duplicate_value.rule</code>) plus a small, deliberately-scoped extension of <code>BaseModel.create</code>/<code>write</code> that consults a cached lookup of active rules &mdash; negligible overhead for every model that has no rule configured.</p>
+    </div>
+
+
+    <div style="margin-top: 32px;">
+        <h2 style="color: #875A7B; font-size: 24px;">Frequently asked questions</h2>
+        
+        <div style="margin-bottom:18px;">
+            <div style="font-size:15px; font-weight:700; color:#5E3C58; margin-bottom:4px;">What happens to duplicates that already exist in the database?</div>
+            <div style="font-size:15px; line-height:1.6; color:#444;">Nothing — the rule only checks new saves going forward. It doesn't retroactively scan or flag existing data.</div>
+        </div>
+        <div style="margin-bottom:18px;">
+            <div style="font-size:15px; font-weight:700; color:#5E3C58; margin-bottom:4px;">Does it work on computed or related fields?</div>
+            <div style="font-size:15px; line-height:1.6; color:#444;">Only stored fields of type Char, Text, Selection, Integer or Float — the same restriction the ORM itself needs to run an efficient duplicate search.</div>
+        </div>
+        <div style="margin-bottom:18px;">
+            <div style="font-size:15px; font-weight:700; color:#5E3C58; margin-bottom:4px;">Is there a performance cost if I don't use it?</div>
+            <div style="font-size:15px; line-height:1.6; color:#444;">No — zero rules configured means zero behavior change. With rules configured, each create/write does one cached lookup for that model, then (only on a real match) a single indexed search.</div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; text-align: center; padding: 24px; background: #f6f2f5; border-radius: 12px;">
+        <h2 style="color: #875A7B; font-size: 22px; margin-top: 0;">Support</h2>
+        <p style="font-size: 15px; margin-bottom: 0;">
+            Questions, bug reports or feature requests:
+            <a href="mailto:meisanqo@outlook.com" style="color: #875A7B;"><b>meisanqo@outlook.com</b></a>
+        </p>
+    </div>
+</section>
