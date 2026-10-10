@@ -1,10 +1,10 @@
 {
     'name': 'No Duplicate Value | Unique Field Rules Without Code',
-    'version': '18.0.1.0.0',
+    'version': '18.0.1.0.1',
     'category': 'Productivity',
     'author': 'Meisanqo',
     'support': 'meisanqo@outlook.com',
-    'summary': 'Block duplicate field values from Settings — no code, no developer.',
+    'summary': "Prevent duplicate values on any field without a developer: pick a model and a field in Settings and a unique constraint is enforced from then on, with a clear message instead of a raw database error. Avoid duplicate records on reference numbers, VAT numbers, SKUs, barcodes, email addresses or tag names. Per rule: case-insensitive duplicate check, scope to company, custom error message and an on/off switch. Unique values on Char, Text, Selection, Integer and Float fields. No code.",
     'description': """
 No Duplicate Value
 ====================
