@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_duplicate_value_rule_list" model="ir.ui.view">
+        <field name="name">no_duplicate_value.rule.list</field>
+        <field name="model">no_duplicate_value.rule</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="model_id"/>
+                <field name="field_id"/>
+                <field name="case_insensitive" widget="boolean_toggle"/>
+                <field name="company_scoped" widget="boolean_toggle"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_duplicate_value_rule_form" model="ir.ui.view">
+        <field name="name">no_duplicate_value.rule.form</field>
+        <field name="model">no_duplicate_value.rule</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="model_id"/>
+                            <field name="field_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="case_insensitive"/>
+                            <field name="company_scoped"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="error_message" placeholder="Default: 'The value ... already exists'"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_duplicate_value_rule" model="ir.actions.act_window">
+        <field name="name">No Duplicate Value</field>
+        <field name="res_model">no_duplicate_value.rule</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'active_test': False}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first rule</p>
+            <p>Pick a model and a field: any new duplicate value on that field will be blocked.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_duplicate_value_rule"
+              name="No Duplicate Value"
+              parent="base.next_id_2"
+              action="action_duplicate_value_rule"
+              groups="base.group_system"
+              sequence="60"/>
+
+</odoo>
